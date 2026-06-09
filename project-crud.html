@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Manager CRUD</title>
+
+<style>
+
+body{
+font-family:Poppins,sans-serif;
+background:#0f172a;
+color:white;
+padding:30px;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+}
+
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+}
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+table{
+width:100%;
+margin-top:20px;
+border-collapse:collapse;
+}
+
+th,td{
+border:1px solid white;
+padding:10px;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>Project Manager CRUD</h1>
+
+<input type="hidden" id="index">
+
+<input
+type="text"
+id="judul"
+placeholder="Judul Project">
+
+<input
+type="text"
+id="deskripsi"
+placeholder="Deskripsi">
+
+<button onclick="simpanProject()">
+
+Simpan Project
+
+</button>
+
+<table>
+
+<tr>
+
+<th>Judul</th>
+
+<th>Deskripsi</th>
+
+<th>Aksi</th>
+
+</tr>
+
+<tbody id="tabelProject">
+
+</tbody>
+
+</table>
+
+</div>
+
+<script>
+
+let project =
+JSON.parse(
+localStorage.getItem("project")
+) || [];
+
+tampil();
+
+function simpanProject(){
+
+let judul =
+document.getElementById("judul").value;
+
+let deskripsi =
+document.getElementById("deskripsi").value;
+
+let index =
+document.getElementById("index").value;
+
+if(index==""){
+
+project.push({
+judul,
+deskripsi
+});
+
+}else{
+
+project[index]={
+judul,
+deskripsi
+};
+
+}
+
+localStorage.setItem(
+"project",
+JSON.stringify(project)
+);
+
+reset();
+
+tampil();
+
+}
+
+function tampil(){
+
+let isi="";
+
+project.forEach((p,i)=>{
+
+isi += `
+<tr>
+
+<td>${p.judul}</td>
+
+<td>${p.deskripsi}</td>
+
+<td>
+
+<button onclick="edit(${i})">
+
+Edit
+
+</button>
+
+<button onclick="hapus(${i})">
+
+Hapus
+
+</button>
+
+</td>
+
+</tr>
+`;
+
+});
+
+document.getElementById(
+"tabelProject"
+).innerHTML = isi;
+
+}
+
+function edit(i){
+
+document.getElementById("judul").value =
+project[i].judul;
+
+document.getElementById("deskripsi").value =
+project[i].deskripsi;
+
+document.getElementById("index").value =
+i;
+
+}
+
+function hapus(i){
+
+project.splice(i,1);
+
+localStorage.setItem(
+"project",
+JSON.stringify(project)
+);
+
+tampil();
+
+}
+
+function reset(){
+
+document.getElementById("judul").value="";
+document.getElementById("deskripsi").value="";
+document.getElementById("index").value="";
+
+}
+
+</script>
+
+</body>
+</html>

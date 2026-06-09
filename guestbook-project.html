@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Guest Book CRUD</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+background:#080808;
+color:white;
+padding:50px;
+}
+
+h1{
+text-align:center;
+margin-bottom:30px;
+color:#00d9ff;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+}
+
+.form-box{
+background:#111;
+padding:25px;
+border-radius:20px;
+margin-bottom:30px;
+}
+
+input,textarea{
+width:100%;
+padding:15px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+background:#222;
+color:white;
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.save{
+background:#00d9ff;
+}
+
+.card{
+background:#111;
+padding:20px;
+border-radius:15px;
+margin-bottom:15px;
+}
+
+.btn-edit{
+background:orange;
+margin-right:10px;
+}
+
+.btn-delete{
+background:red;
+color:white;
+}
+
+.back{
+display:inline-block;
+margin-top:30px;
+text-decoration:none;
+color:#00d9ff;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>📖 Guest Book CRUD</h1>
+
+<div class="form-box">
+
+<input type="text" id="nama" placeholder="Nama">
+
+<textarea id="pesan" rows="4" placeholder="Pesan"></textarea>
+
+<button class="save" onclick="simpanData()">
+Simpan
+</button>
+
+</div>
+
+<div id="listData"></div>
+
+<a href="index.html" class="back">
+⬅ Kembali ke Portfolio
+</a>
+
+</div>
+
+<script>
+
+let editIndex = -1;
+
+function simpanData(){
+
+let nama = document.getElementById("nama").value;
+let pesan = document.getElementById("pesan").value;
+
+if(nama=="" || pesan==""){
+alert("Isi semua data!");
+return;
+}
+
+let data =
+JSON.parse(localStorage.getItem("guestbook")) || [];
+
+if(editIndex==-1){
+
+data.push({
+nama:nama,
+pesan:pesan
+});
+
+}else{
+
+data[editIndex]={
+nama:nama,
+pesan:pesan
+};
+
+editIndex=-1;
+
+}
+
+localStorage.setItem(
+"guestbook",
+JSON.stringify(data)
+);
+
+document.getElementById("nama").value="";
+document.getElementById("pesan").value="";
+
+tampilData();
+
+}
+
+function tampilData(){
+
+let data =
+JSON.parse(localStorage.getItem("guestbook")) || [];
+
+let html="";
+
+data.forEach((item,index)=>{
+
+html += `
+<div class="card">
+
+<h3>${item.nama}</h3>
+
+<p>${item.pesan}</p>
+
+<br>
+
+<button
+class="btn-edit"
+onclick="editData(${index})">
+
+Edit
+
+</button>
+
+<button
+class="btn-delete"
+onclick="hapusData(${index})">
+
+Hapus
+
+</button>
+
+</div>
+`;
+
+});
+
+document.getElementById("listData").innerHTML=html;
+
+}
+
+function hapusData(index){
+
+let data =
+JSON.parse(localStorage.getItem("guestbook")) || [];
+
+data.splice(index,1);
+
+localStorage.setItem(
+"guestbook",
+JSON.stringify(data)
+);
+
+tampilData();
+
+}
+
+function editData(index){
+
+let data =
+JSON.parse(localStorage.getItem("guestbook")) || [];
+
+document.getElementById("nama").value =
+data[index].nama;
+
+document.getElementById("pesan").value =
+data[index].pesan;
+
+editIndex=index;
+
+}
+
+tampilData();
+
+</script>
+
+</body>
+</html>

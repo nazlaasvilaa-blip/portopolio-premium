@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nazla Savila Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#050505;
+color:white;
+overflow-x:hidden;
+position:relative;
+
+background-image:
+linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+
+background-size:40px 40px;
+}
+/* Aurora Background */
+
+body::before{
+content:"";
+position:fixed;
+width:600px;
+height:600px;
+background:#00d9ff;
+filter:blur(250px);
+top:-200px;
+left:-200px;
+opacity:.25;
+animation:move1 10s infinite alternate;
+z-index:-1;
+}
+
+body::after{
+content:"";
+position:fixed;
+width:600px;
+height:600px;
+background:#ff00aa;
+filter:blur(250px);
+bottom:-200px;
+right:-200px;
+opacity:.25;
+animation:move2 10s infinite alternate;
+z-index:-1;
+}
+
+@keyframes move1{
+
+0%{
+transform:translate(0,0);
+}
+
+100%{
+transform:translate(150px,100px);
+}
+
+}
+
+@keyframes move2{
+
+0%{
+transform:translate(0,0);
+}
+
+100%{
+transform:translate(-150px,-100px);
+}
+
+}
+
+/* LOADING */
+
+#loader{
+position:fixed;
+width:100%;
+height:100vh;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:99999;
+font-size:30px;
+font-weight:bold;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+padding:15px 30px;
+border-radius:50px;
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(20px);
+z-index:999;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+margin:0 15px;
+font-weight:500;
+}
+
+nav a:hover{
+color:#00d9ff;
+}
+
+/* DARK MODE */
+
+.dark-btn{
+cursor:pointer;
+padding:10px 20px;
+border-radius:20px;
+border:none;
+margin-left:10px;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 10%;
+gap:50px;
+}
+
+.left{
+flex:1;
+}
+
+.small{
+color:#00d9ff;
+letter-spacing:4px;
+margin-bottom:20px;
+}
+
+.left h1{
+font-size:90px;
+line-height:90px;
+margin-bottom:20px;
+}
+
+.typing{
+color:#00d9ff;
+}
+
+.desc{
+max-width:500px;
+line-height:30px;
+opacity:.8;
+}
+
+.buttons{
+margin-top:40px;
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:15px 35px;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.btn1{
+background:white;
+color:black;
+}
+
+.btn2{
+border:2px solid white;
+color:white;
+}
+
+.right{
+flex:1;
+display:flex;
+justify-content:center;
+}
+
+.photo{
+width:380px;
+height:480px;
+border-radius:30px;
+overflow:hidden;
+border:2px solid rgba(255,255,255,.1);
+box-shadow:0 0 40px rgba(0,217,255,.2);
+}
+
+.photo img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* SECTION */
+
+section{
+padding:100px 10%;
+}
+
+.title{
+text-align:center;
+font-size:45px;
+margin-bottom:60px;
+}
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+}
+
+.card{
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(20px);
+padding:25px;
+border-radius:25px;
+transition:.4s;
+box-shadow:0 0 20px rgba(255,255,255,.05);
+}
+
+.card:hover{
+transform:translateY(-15px) scale(1.03);
+box-shadow:0 0 30px rgba(0,217,255,.4);
+}
+
+/* SKILL */
+
+.skill{
+margin-bottom:25px;
+}
+
+.bar{
+height:20px;
+background:#222;
+border-radius:20px;
+overflow:hidden;
+margin-top:10px;
+}
+
+.fill{
+height:100%;
+background:linear-gradient(90deg,#00d9ff,#00ff88);
+}
+
+.html{
+width:90%;
+}
+
+.css{
+width:85%;
+}
+
+.js{
+width:75%;
+}
+
+.canva{
+width:95%;
+}
+
+/* STATS */
+
+.number{
+font-size:50px;
+font-weight:800;
+color:#00d9ff96;
+}
+
+/* PROJECT */
+
+.project-img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:15px;
+margin-bottom:15px;
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+.card p{
+line-height:28px;
+}
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.hero{
+flex-direction:column;
+text-align:center;
+padding-top:120px;
+}
+
+.left h1{
+font-size:60px;
+line-height:60px;
+}
+
+.photo{
+width:280px;
+height:350px;
+box-shadow:
+0 0 30px rgba(0,217,255,.4),
+0 0 80px rgba(255,0,170,.2);
+}
+
+.buttons{
+justify-content:center;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="loader">
+
+Loading Portfolio...
+
+</div>
+
+<nav>
+
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#stats">Statistics</a>
+<a href="#projects">Projects</a>
+<a href="#timeline">Timeline</a>
+<a href="#life">Daily Life</a>
+<a href="#contact">Contact</a>
+
+<button onclick="darkMode()" class="dark-btn">
+🌙
+</button>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="left">
+
+<p class="small">
+
+WELCOME TO MY PORTFOLIO
+
+</p>
+
+<h1>
+
+Nazla<br>
+
+<span class="typing"></span>
+
+</h1>
+
+<p class="desc">
+
+Mahasiswa Informatika yang memiliki minat pada
+Web Development dan Teknologi Digital.
+
+</p>
+
+<div class="buttons">
+
+<a href="cv.pdf" class="btn btn1">
+
+Download CV
+
+</a>
+
+<a href="#projects" class="btn btn2">
+
+View Projects
+
+</a>
+
+</div>
+
+</div>
+
+<div class="right">
+
+<div class="photo">
+
+<img src="photo.jpg">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<h2 class="title">
+
+About Me
+
+</h2>
+
+<div class="container">
+
+<div class="card">
+
+<h3>Identitas</h3>
+
+<br>
+
+<p>Nama : Nazla Savila</p>
+<p>NIM : 240504045</p>
+<p>Unit : 02</p>
+<p>Prodi : Informatika</p>
+<p>Fkultas : Sains Dan Teknologi</p>
+<p>Universitas : Universitas Samudra</p>
+
+</div>
+
+<div class="card">
+
+<h3>Tujuan</h3>
+
+<br>
+
+<p>
+
+Menjadi orang yang berguna bagi diri sendiri dan orang lain.
+Membuat teknologi yang bermanfaaat bagi masyarakat.
+Berkembang di bidang teknologi IT.
+Membuat karya kreatif dan terus belajar hal baru.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+<h2 class="title">
+
+ Skills
+
+</h2>
+
+<div class="card">
+
+<div class="skill">
+
+HTML 80%
+
+<div class="bar">
+
+<div class="fill html"></div>
+
+</div>
+
+</div>
+
+<div class="skill">
+
+CSS 70%
+
+<div class="bar">
+
+<div class="fill css"></div>
+
+</div>
+
+</div>
+
+<div class="skill">
+
+JavaScript 65%
+
+<div class="bar">
+
+<div class="fill js"></div>
+
+</div>
+
+</div>
+
+<div class="skill">
+
+Canva 85%
+
+<div class="bar">
+
+<div class="fill canva"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- STATS -->
+
+
+<section id="stats">
+
+<h2 class="title">
+
+Pencapaian Saya
+
+</h2>
+
+<div class="container">
+
+<div class="card">
+
+<div class="number">3+</div>
+
+<h3>Project</h3>
+
+<br>
+
+<p>
+
+Website dan aplikasi yang telah saya buat selama perkuliahan.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="number">40+</div>
+
+<h3>Tugas Informatika</h3>
+
+<br>
+
+<p>
+
+Berbagai tugas pemrograman dan teknologi informasi yang telah diselesaikan.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="number">100+</div>
+
+<h3>Jam Belajar</h3>
+
+<br>
+
+<p>
+
+Waktu yang digunakan untuk belajar coding, desain, dan pengembangan website.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+
+<h2 class="title">
+My Projects
+</h2>
+
+<div class="container">
+
+<a href="portofolio-project.html" class="project-link">
+
+<div class="card">
+
+<h3>Website Portofolio</h3>
+
+<p>
+Website personal modern dengan desain premium dan responsive.
+</p>
+
+</div>
+
+</a>
+
+<a href="guestbook-project.html" class="project-link">
+
+<div class="card">
+
+<h3>Guest Book CRUD</h3>
+
+<p>
+Sistem buku tamu dengan fitur tambah, edit dan hapus data.
+</p>
+
+</div>
+
+</a>
+
+<a href="animation-project.html" class="project-link">
+
+<div class="card">
+
+
+<h3>Animasi 2D</h3>
+
+<p>
+Animasi menggunakan HTML CSS dan JavaScript.
+</p>
+
+</div>
+
+</a>
+
+</div>
+
+</section>
+
+<!-- TIMELINE -->
+
+<section id="timeline">
+
+<h2 class="title">
+
+Perjalanan Saya
+
+</h2>
+
+<div class="timeline">
+
+<div class="timeline-card">
+
+<h3>2022</h3>
+
+<p>
+Mulai mendalami dunia teknologi dan komputer.
+</p>
+
+</div>
+
+<div class="timeline-card">
+
+<h3>2023</h3>
+
+<p>
+Belajar HTML, CSS dan membuat website pertama.
+</p>
+
+</div>
+
+<div class="timeline-card">
+
+<h3>2024</h3>
+
+<p>
+Membuat berbagai tugas coding dan project kampus.
+</p>
+
+</div>
+
+<div class="timeline-card">
+
+<h3>2025</h3>
+
+<p>
+Mengembangkan portfolio dan meningkatkan skill.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- DAILY LIFE -->
+
+<section id="life">
+
+<h2 class="title">
+
+Daily Life
+
+</h2>
+
+<div class="container">
+
+<a href="musik.html" class="card-link">
+
+<div class="card">
+
+<h1>🎵</h1>
+
+<h3>Musik</h3>
+
+<p>
+Playlist, lagu favorit dan momen mendengarkan musik.
+</p>
+
+</div>
+
+</a>
+
+<a href="Best friend.html" class="card-link">
+
+<div class="card">
+
+<h1>📸</h1>
+
+<h3>Best friend</h3>
+
+<p>
+Galeri foto dan hasil fotografi favorit.
+</p>
+
+</div>
+
+</a>
+
+<a href="jalan.html" class="card-link">
+
+<div class="card">
+
+<h1>✈️</h1>
+
+<h3>Jalan-jalan</h3>
+
+<p>
+Perjalanan dan tempat menarik yang pernah dikunjungi.
+</p>
+
+</div>
+
+</a>
+
+<a href="kuliner.html" class="card-link">
+
+<div class="card">
+
+<h1>🍜</h1>
+
+<h3>Kuliner</h3>
+
+<p>
+Makanan dan minuman favorit.
+</p>
+
+</div>
+
+</a>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<h2 class="title">
+
+Contact Me
+
+</h2>
+
+<div class="contact-box">
+
+<input type="text" placeholder="Nama">
+
+<input type="email" placeholder="Email">
+
+<textarea rows="6" placeholder="Pesan"></textarea>
+
+<button class="send-btn">
+
+Kirim Pesan
+
+</button>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+  <section id="contact" class="contact">
+
+    <p>
+ ✨ Follow Me ✨
+    </p>
+
+    <div class="socials">
+
+      <a href="https://www.instagram.com/nazlasavila?igsh=bTJ4OW8zaG92eHE0" target="_blank">
+        Instagram
+      </a>
+
+      
+
+    </div>
+
+  </section>
+<!-- BACK TO TOP -->
+
+<button id="topBtn" onclick="topFunction()">
+
+⬆
+
+</button>
+
+<!-- FOOTER -->
+
+<footer>
+
+<h3>Nazla Savila</h3>
+
+<br>
+
+<p>
+Terima kasih telah mengunjungi portfolio saya.
+</p>
+
+<br>
+
+<p>
+© 2026
+</p>
+
+</footer>
+
+<style>
+
+/* TIMELINE */
+
+.timeline{
+border-left:4px solid #00d9ff;
+padding-left:30px;
+max-width:800px;
+margin:auto;
+}
+
+.timeline-card{
+background:rgba(255,255,255,.05);
+padding:25px;
+border-radius:20px;
+margin-bottom:30px;
+}
+
+/* CONTACT */
+
+.contact-box{
+max-width:700px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.contact-box input,
+.contact-box textarea{
+
+padding:15px;
+border:none;
+border-radius:15px;
+background:rgba(255,255,255,.08);
+color:white;
+}
+
+.send-btn{
+
+padding:15px;
+border:none;
+border-radius:15px;
+background:#00d9ff;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* TOP BUTTON */
+
+#topBtn{
+
+position:fixed;
+bottom:20px;
+right:20px;
+width:55px;
+height:55px;
+border:none;
+border-radius:50%;
+background:#00d9ff;
+font-size:22px;
+cursor:pointer;
+display:none;
+}
+
+/* DARK MODE */
+
+.light{
+
+background:white;
+color:black;
+}
+
+.light .card,
+.light .timeline-card{
+
+background:#f1f1f1;
+color:black;
+}
+
+.light input,
+.light textarea{
+
+background:#ddd;
+color:black;
+}
+@media(max-width:768px){
+
+nav{
+width:95%;
+overflow-x:auto;
+white-space:nowrap;
+padding:15px;
+}
+
+nav a{
+margin:0 8px;
+font-size:14px;
+}
+
+}
+
+</style>
+
+<script>
+
+/* LOADER */
+
+window.addEventListener("load",function(){
+
+setTimeout(function(){
+
+document.getElementById("loader")
+.style.display="none";
+
+},1000);
+
+});
+
+/* TYPING */
+
+let text="Savila";
+let i=0;
+
+function typing(){
+
+if(i<text.length){
+
+document.querySelector(".typing")
+.innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(typing,150);
+
+}
+
+}
+
+typing();
+
+/* DARK MODE */
+
+function darkMode(){
+
+document.body.classList.toggle("light");
+
+}
+
+/* TOP BUTTON */
+
+window.onscroll=function(){
+
+scrollFunction();
+
+};
+
+function scrollFunction(){
+
+if(document.body.scrollTop>200 ||
+document.documentElement.scrollTop>200){
+
+document.getElementById("topBtn")
+.style.display="block";
+
+}else{
+
+document.getElementById("topBtn")
+.style.display="none";
+
+}
+
+}
+
+function topFunction(){
+
+window.scrollTo({
+
+top:0,
+behavior:'smooth'
+
+});
+
+}
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+
+emailjs.init("PUBLIC_KEY_KAMU");
+
+function kirimPesan(){
+
+emailjs.send(
+
+"SERVICE_ID_KAMU",
+
+"TEMPLATE_ID_KAMU",
+
+{
+
+nama:
+document.getElementById("nama").value,
+
+email:
+document.getElementById("email").value,
+
+pesan:
+document.getElementById("pesan").value
+
+}
+
+)
+
+.then(function(){
+
+alert("Pesan berhasil dikirim!");
+
+})
+
+.catch(function(){
+
+alert("Pesan gagal dikirim!");
+
+});
+
+}
+
+</script>
+</body>
+</html>
