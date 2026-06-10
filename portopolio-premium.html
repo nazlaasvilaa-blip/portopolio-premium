@@ -793,52 +793,69 @@ Makanan dan minuman favorit.
 </section>
 
 <!-- CONTACT -->
-
 <section id="contact">
 
 <h2 class="title">
-
-Contact Me
-
+Mari Terhubung
 </h2>
 
-<div class="contact-box">
+<div class="container">
 
-<input type="text" placeholder="Nama">
+<a href="https://wa.me/6282210524955" target="_blank" class="card-link">
 
-<input type="email" placeholder="Email">
+<div class="card">
 
-<textarea rows="6" placeholder="Pesan"></textarea>
+<h1>📱</h1>
 
-<button class="send-btn">
+<h3>WhatsApp</h3>
 
-Kirim Pesan
+<p>
+Hubungi saya melalui WhatsApp
+</p>
 
-</button>
+</div>
+
+</a>
+
+
+<a href="https://www.instagram.com/nazlasavila?igsh=bTJ4OW8zaG92eHE0" target="_blank" class="card-link">
+
+<div class="card">
+
+<h1>📷</h1>
+
+<h3>Instagram</h3>
+
+<p>
+Ikuti akun Instagram saya
+</p>
+
+</div>
+
+</a>
+
+
+<a href="https://nazlaasvilaa-blip.github.io/portopolio-premium/" target="_blank" class="card-link">
+
+<div class="card">
+
+<h1>💻</h1>
+
+<h3>GitHub</h3>
+
+<p>
+Lihat repository dan project saya
+</p>
+
+</div>
+
+</a>
 
 </div>
 
 </section>
 
-<!-- CONTACT -->
-
-  <section id="contact" class="contact">
-
-    <p>
- ✨ Follow Me ✨
-    </p>
-
-    <div class="socials">
-
-      <a href="https://www.instagram.com/nazlasavila?igsh=bTJ4OW8zaG92eHE0" target="_blank">
-        Instagram
-      </a>
-
-      
-
-    </div>
-
-  </section>
+<h2 class="t
 <!-- BACK TO TOP -->
 
 <button id="topBtn" onclick="topFunction()">
@@ -868,7 +885,20 @@ Terima kasih telah mengunjungi portfolio saya.
 </footer>
 
 <style>
+.card-link{
+text-decoration:none;
+color:white;
+display:block;
+}
 
+.card-link .card{
+height:100%;
+}
+
+.card-link:hover .card{
+transform:translateY(-10px);
+box-shadow:0 0 30px rgba(255,0,100,.5);
+}
 /* TIMELINE */
 
 .timeline{
